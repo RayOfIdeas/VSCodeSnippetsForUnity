@@ -11,7 +11,7 @@ Convenient snippets for my most used code blocks.
 
 ### Coroutines
 - `corupdate` for creating a looping coroutine
-- `correstart` for restarting a looping coroutine; only works with my other plugin, PlugRMK
+- `correstart` for restarting a looping coroutine; only works with [RestartCoroutine()](https://github.com/BlokyMose/PlugRMK/blob/master/UnityUti/GameUtility/CoroutineUtility.cs) in plugin [PlugRMK](https://github.com/BlokyMose/PlugRMK)
 - `cordelay` for creating a delayed coroutine
 - `eventtri` for adding EventTrigger and entries to an image component
 
