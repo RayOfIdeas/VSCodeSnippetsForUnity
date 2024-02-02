@@ -1,0 +1,120 @@
+{
+	// Doc: https://code.visualstudio.com/docs/editor/userdefinedsnippets
+	// Possible variables are:
+	// - Tab stops: $1, $2, and $0 for the final cursor position 
+	// - Placeholders: ${1:label}, ${2:another}
+	// - Nested placeholders: ${1:another ${2:placeholder}}
+	// - Choice: ${1|one,two,three|}
+
+	"Debug to console": {
+		"prefix": "debug",
+		"body": [
+			"Debug.Log($\"${1|Hello world,1,2,3,4,5|}: $0\");"
+		],
+		"description": "Print to Unity console"
+	},
+
+	"Debug Warning to console": {
+		"prefix": "debugw",
+		"body": [
+			"Debug.LogWarning($\"$1\");"
+		],
+		"description": "Print to Unity console with warning"
+	},
+
+	"Debug Error to console": {
+		"prefix": "debuge",
+		"body": [
+			"Debug.LogError($\"$1\");"
+		],
+		"description": "Print to Unity console with error"
+	},
+
+	"Debug with variable name to console": {
+		"prefix": "debugg",
+		"body": [
+			"Debug.Log($\"{nameof($1)}: $1\");"
+		],
+		"description": "Print to Unity console with variable name and value"
+	},
+
+	"Coroutine Update":{
+		"prefix": "corUpdate",
+		"body":["StartCoroutine(Updating());",
+            "IEnumerator Updating()",
+            "{",
+			    "var time = 0f;",
+                "while (true)",
+                "{",
+					"$0",
+                    "time += Time.deltaTime;",
+                    "yield return null;",
+                "}",
+            "}"
+		],
+		"description": "Coroutine for Updating"
+	},
+	
+	"Coroutine Restart":{
+		"prefix": "correstart",
+		"body":["${1:corName} = this.RestartCoroutine(Updating(), ${1:corName});",
+            "IEnumerator Updating()",
+            "{",
+			    "var time = 0f;",
+                "while (true)",
+                "{",
+					"$0",
+                    "time += Time.deltaTime;",
+                    "yield return null;",
+                "}",
+            "}"
+		],
+		"description": "Restart a coroutine"
+	},
+
+	"Coroutine Delay":{
+		"prefix": "cordelay",
+		"body":["StartCoroutine(Delaying(${1:delay}));",
+            "IEnumerator Delaying(float delay)",
+            "{",
+			    "var time = 0f;",
+                "while (time < delay)",
+                "{",
+					"$0",
+                    "time += Time.deltaTime;",
+                    "yield return null;",
+                "}",
+            "}"
+		],
+		"description": "Coroutine for delay"
+	},
+
+	"Event Trigger Setup":{
+		"prefix": "eventtri",
+		"body":[
+			"var ${1:imageComponentName}_et = ${1:imageComponentName}.gameObject.AddComponent<EventTrigger>();",
+			"var ${1:imageComponentName}_entry_enter = new EventTrigger.Entry();",
+			"${1:imageComponentName}_entry_enter.eventID = EventTriggerType.PointerEnter;",
+			"${1:imageComponentName}_entry_enter.callback.AddListener((data) =>",
+				"{",
+				"});",
+			"${1:imageComponentName}_et.triggers.Add(${1:imageComponentName}_entry_enter);",
+				"",
+			"var ${1:imageComponentName}_entry_exit = new EventTrigger.Entry();",
+			"${1:imageComponentName}_entry_exit.eventID = EventTriggerType.PointerExit;",
+			"${1:imageComponentName}_entry_exit.callback.AddListener((data) =>",
+				"{",
+				"});",
+			"${1:imageComponentName}_et.triggers.Add(${1:imageComponentName}_entry_exit);",
+				"",
+			"var ${1:imageComponentName}_entry_click = new EventTrigger.Entry();",
+			"${1:imageComponentName}_entry_click.eventID = EventTriggerType.PointerClick;",
+			"${1:imageComponentName}_entry_click.callback.AddListener((data) =>",
+				"{",
+				"});",
+			"${1:imageComponentName}_et.triggers.Add(${1:imageComponentName}_entry_click);",
+		],
+		"description": "Setup event trigger events for an image component"
+	},
+	
+}
