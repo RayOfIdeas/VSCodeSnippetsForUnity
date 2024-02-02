@@ -117,4 +117,19 @@
 		"description": "Setup event trigger events for an image component"
 	},
 	
+	"SerializeField": {
+		"prefix": "sf",
+		"body": [
+			"[SerializeField]"
+		],
+		"description": "Type [SerializeField]"
+	},
+
+	"Serializable": {
+		"prefix": "sb",
+		"body": [
+			"[Serializable]"
+		],
+		"description": "Type [Serializable]"
+	},
 }
